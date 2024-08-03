@@ -13,11 +13,11 @@ console.log('Port:', process.env.PORT);
 const app = express();
 
 // Middleware
+
 app.use(cors({
-  origin: 'https://elearningplatform.onrender.com',
-  methods: 'GET,POST,PUT,DELETE',
-  allowedHeaders: 'Content-Type,Authorization',
-  credentials: true, // Allow cookies and other credentials
+  origin: ['https://jobmarketfrontend.onrender.com', 'https://elearningplatform.onrender.com'],
+  methods: 'GET,POST,PUT,DELETE,OPTIONS',
+  credentials: true,
 }));
 
 
