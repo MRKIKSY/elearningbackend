@@ -3,35 +3,21 @@ const router = express.Router();
 const Job = require('./models'); // Ensure this path is correct
 
 // GET all jobs
-router.get('/', async (req, res) => {
-  try {
-    const jobs = await Job.find(); // Fetch all jobs from the database
-    console.log('Jobs fetched:', jobs); // Log fetched jobs
-    res.json(jobs); // Send jobs as response
-  } catch (error) {
-    console.error('Error fetching jobs:', error); // Log error
-    res.status(500).json({ message: 'Internal Server Error' }); // Send error response
-  }
-});
-
-// GET a single job by ID
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
-  console.log('Requested Job ID:', id); // Debugging statement
-
+  console.log('Requested Job ID:', id);
   try {
     if (!id) {
-      return res.status(400).json({ message: 'Job ID is required' }); // Check for missing ID
+      return res.status(400).json({ message: 'Job ID is required' });
     }
-
-    const job = await Job.findById(id); // Find job by ID
+    const job = await Job.findById(id);
     if (!job) {
-      return res.status(404).json({ message: 'Job not found' }); // Send 404 if job not found
+      return res.status(404).json({ message: 'Job not found' });
     }
-    res.json(job); // Send job as response
+    res.json(job);
   } catch (error) {
-    console.error('Error fetching job:', error); // Log error
-    res.status(500).json({ message: 'Internal Server Error' }); // Send error response
+    console.error('Error fetching job:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
   }
 });
 
