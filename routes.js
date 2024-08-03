@@ -16,8 +16,15 @@ router.get('/', async (req, res) => {
 
 // GET a single job by ID
 router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  console.log('Requested Job ID:', id); // Debugging statement
+
   try {
-    const job = await Job.findById(req.params.id); // Find job by ID
+    if (!id) {
+      return res.status(400).json({ message: 'Job ID is required' }); // Check for missing ID
+    }
+
+    const job = await Job.findById(id); // Find job by ID
     if (!job) {
       return res.status(404).json({ message: 'Job not found' }); // Send 404 if job not found
     }
@@ -27,6 +34,7 @@ router.get('/:id', async (req, res) => {
     res.status(500).json({ message: 'Internal Server Error' }); // Send error response
   }
 });
+
 
 // POST a new job
 router.post('/', async (req, res) => {
