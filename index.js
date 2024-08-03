@@ -14,10 +14,12 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: 'https://jobmarketfrontend.onrender.com', // Adjust if needed
+  origin: 'https://jobmarketfrontend.onrender.com',
   methods: 'GET,POST,PUT,DELETE',
   allowedHeaders: 'Content-Type,Authorization',
+  credentials: true, // Allow cookies and other credentials
 }));
+
 
 app.use(express.json()); // Ensure this is before your routes
 

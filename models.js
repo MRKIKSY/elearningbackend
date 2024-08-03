@@ -1,4 +1,3 @@
-// backend/models.js
 const mongoose = require('mongoose');
 
 const jobSchema = new mongoose.Schema({
@@ -19,7 +18,7 @@ const jobSchema = new mongoose.Schema({
     required: true,
   },
   salary: {
-    type: Number,
+    type: String, // Change this to String to handle formatted values
     required: true,
   },
   company: {
