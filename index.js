@@ -15,7 +15,7 @@ const app = express();
 // Middleware
 
 app.use(cors({
-  origin: [ 'https://elearningplatform.onrender.com','https://jobmarketfrontend.onrender.com'],
+  origin: [ 'https://elearningplatform.onrender.com'],
   methods: 'GET,POST,PUT,DELETE,OPTIONS',
   credentials: true,
 }));
